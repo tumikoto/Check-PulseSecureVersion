@@ -1,18 +1,18 @@
 Param(
 	[parameter(Mandatory=$true)]
-	[String]$targetlistfile
+	[String]$TargetFile
 )
 
 If (!($targetlistfile)) {
-	Write-Host Usage:
-	Write-Host  Check-PulseSecureVersion.ps1 -RemoteHost <path to file containing list of URIs>
+	Write-Host "Usage:"
+	Write-Host "`tCheck-PulseSecureVersion.ps1 -TargetFile <target_filepath>"
 	Write-Host " "
-	Write-Host Example:
-	Write-Host  Check-PulseSecureVersion.ps1 -RemoteHost "pulsesecure_devices.txt"
+	Write-Host "Example:"
+	Write-Host "`tCheck-PulseSecureVersion.ps1 -TargetFile pulsesecure_devices.txt"
 	Exit
 }
 
-$targetlist = Get-Content -Path $targetlistfile
+$targetlist = Get-Content -Path $TargetFile
 
 foreach ($target in $targetlist) {
 
